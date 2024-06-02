@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: API-GATEWAY
+    
+  profiles:
+    active:
+    - dev01
+
+  cloud:
+    gateway:
+      routes:
+       - id : Management-Service-1
+         uri: http://localhost:9090
+         predicates:
+            - Path=/api/person/**
+  main:
+    web-application-type: reactive
+
+server:
+  port: 9089
+   
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+
+ 
+logging:
+  file:
+    path: C:\App\CBNK\logs\Api-Gateway
+    name: C:\App\CBNK\logs\Api-Gateway\gateway.logs
+    
+    
